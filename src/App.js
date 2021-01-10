@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from 'react';
+import MessageForm from './components/MessageForm';
+import MessageDisplay from './components/MessageDisplay';
+    
+    
 function App() {
+  const [state, setState] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MessageForm inputs={state} setInputs={setState}/>
+      {/* <MessageDisplay data={state}/> */}
     </div>
   );
-}
+};
+//   const youveGotMail = ( newMessage ) => {
+//       setCurrentMsg( newMessage );
+//   }
+  
+//   return (
+//       <>
+//           <MessageForm inputs={ youveGotMail } />
+//           <MessageDisplay data={ currentMsg } />
+//       </>
+//   );
+// }
 
+
+    
 export default App;
