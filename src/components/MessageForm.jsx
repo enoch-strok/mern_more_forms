@@ -3,8 +3,7 @@ import React, { useState } from 'react';
     
 const MessageForm = (props) => {
     const {inputs, setInputs} = props;
-    // const inputs = props.inputs;             //Alt way to to say the above line ^1
-    // const setInputs = props.setInputs;       //Alt way to to say the above line ^2
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setlastName] = useState("");
     const [email, setEmail] = useState("");
@@ -23,13 +22,18 @@ const createUser = e => {
     const newUser = {firstName, lastName, email, password, passwordCheck};
 };
 
-    const onChange = e => {
-        // e.preventDefault();
+    const onSubmit = e => {
+        e.preventDefault();
         setInputs({
-            ...inputs,
-            [e.target.name]: e.target.value
+            // ...inputs,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            confirmPassword: passwordCheck
         });
     };
+
 
     const onChange_firstName = (e) => {
         setFirstName(e.target.value);
@@ -64,23 +68,9 @@ const createUser = e => {
         } else setPasswordCheckError("");
     };
 
-    // const passwordCheck = (e) => {
-    //     if (e.target.value === ""){
-    //         setPasswordCheckError("");
-    //     } else if (e.target.value !== inputs.password) {
-    //         setPasswordCheckError("Passwords do not match!");
-    //     } else setPasswordCheckError("");
-    // };
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     props.inputs( inputs );
-    // };
-    
     return (
         <fieldset>
-            {/* <form onSubmit={(e) => e.preventDefault()}> */} 
-            <form>
+            <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <label htmlFor="firstName">First Name</label>
                     <input onChange={onChange_firstName} type="text" name="firstName"/>
@@ -106,6 +96,7 @@ const createUser = e => {
                     <input onChange={onChange_passwordCheck} type="text" name="confirmPassword"/>
                     {passwordCheckError ? <p style={{color: "red"}}>{passwordCheckError}</p> : ""}
                 </div>
+            <input type="submit" value="Submit" ></input>
             </form>
         </fieldset>
     );

@@ -14,21 +14,10 @@ function App() {
   return (
     <div className="App">
       <MessageForm inputs={state} setInputs={setState}/>
-      {/* <MessageDisplay data={state}/> */}
+      <MessageDisplay data={state}/>
     </div>
   );
 };
-//   const youveGotMail = ( newMessage ) => {
-//       setCurrentMsg( newMessage );
-//   }
-  
-//   return (
-//       <>
-//           <MessageForm inputs={ youveGotMail } />
-//           <MessageDisplay data={ currentMsg } />
-//       </>
-//   );
-// }
 
 
     
